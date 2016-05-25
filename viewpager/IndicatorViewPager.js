@@ -4,7 +4,8 @@
 
 'use strict';
 
-import React, {Component, StyleSheet, View, PropTypes} from 'react-native';
+import React, {Component, PropTypes} from 'react';
+import {StyleSheet, View} from 'react-native';
 import ViewPager from './ViewPager';
 
 const VIEWPAGER_REF = 'viewPager';
@@ -38,11 +39,13 @@ export default class IndicatorViewPager extends Component {
     _onPageScroll(params) {
         let indicator = this.refs[INDICATOR_REF];
         indicator && indicator.onPageScroll && indicator.onPageScroll(params);
+        this.props.onPageScroll && this.props.onPageScroll(params);
     }
 
     _onPageSelected(params) {
         let indicator = this.refs[INDICATOR_REF];
         indicator && indicator.onPageSelected && indicator.onPageSelected(params);
+        this.props.onPageSelected && this.props.onPageSelected(params);
     }
 
     _renderIndicator() {
